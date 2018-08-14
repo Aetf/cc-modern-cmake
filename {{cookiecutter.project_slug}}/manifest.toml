@@ -1,0 +1,6 @@
+[[features]]
+name = "qt"
+enabled = {{ cookiecutter.with_qt | lower }}
+resources = [
+    "tests/catch2_qt.h"
+]

@@ -4,8 +4,14 @@
     "github_username": "Your github username",
     "project_name": "Name of the project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+    "project_namespace": "{{ cookiecutter.project_slug.replace('-', '') }}",
     "project_short_description": "A short description of the project",
     "release_date": "{% now 'local' %}",
     "version": "0.1.0",
-    "_extensions": ["jinja2_time.TimeExtension"]
+    "with_qt": [false, true],
+    "_extensions": [
+        "cookiecutter_repo_extensions.Extension",
+        "cchelpers.HelperFilters",
+        "cchelpers.CopyrightTag"
+    ]
 }

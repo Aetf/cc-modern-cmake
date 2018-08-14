@@ -5,12 +5,16 @@ name = "pypi"
 
 [packages]
 cookiecutter = "*"
+invoke = "*"
+"flake8" = "*"
 pytest = "*"
 pytest-cookies = "*"
-"flake8" = "*"
+"pathlib2" = {version = "*", marker = "python_version < 3" }
+cookiecutter-repo-extensions = "*"
 
 [dev-packages]
-invoke = "*"
+"autopep8" = "*"
+pdbpp = "*"
 
 [requires]
 python_version = "3.7"

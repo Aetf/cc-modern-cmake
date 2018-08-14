@@ -11,9 +11,10 @@ def init(c):
 
 
 @task
-def test(c):
+def test(c, pytestArgs=''):
     """Run tests"""
-    c.run("pipenv run pytest tests")
+    test_cmd = ['pipenv', 'run', 'pytest', 'tests', pytestArgs]
+    c.run(' '.join(test_cmd), pty=True)
 
 
 @task
