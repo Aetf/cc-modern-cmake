@@ -48,8 +48,8 @@ def delete_resource(resource):
 
 def init_git():
     sp.check_call(['git', 'init'])
-    sp.check_call(['git', 'add', '--all', '.'])
 
+    # instead of relying on .gitmodules file, parse it and use git cli to add modules
     # read .gitmodules file
     gitmodules = defaultdict(dict)
     outputs = sp.check_output(['git', 'config', '-f', '.gitmodules', '-z', '--get-regexp', r'^submodule\.'],
@@ -81,8 +81,9 @@ def init_git():
         if 'branch' in props:
             add_cmd += ['-b', props['branch']]
         add_cmd += ['--', props['url'], props['path']]
-        sp.check_call(add_cmd)
+        sp.check_call(add_cmd, stdout=sp.PIPE, stderr=sp.PIPE)
 
+    sp.check_call(['git', 'add', '--all', '.'])
     sp.check_call(['git', 'commit', '-m', 'Initial commit'])
 
 
